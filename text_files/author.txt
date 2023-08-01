@@ -1,0 +1,7 @@
+Czesc mam na imie Tomek i chcialbym zaprezentowac tym programem swoje umiejetnosci w Javie.
+Jestem po pierwszym roku studiow na kierunku informatyka i pomimo tego, ze brzmi to jakbym mial sie podlizywac
+to programowanie to moja pasja. Aplikacja z ktorej obecnie korzystasz powstala w technologii Java, natomiast
+interfejs graficzny powstal w bibliotece Swing. Dodatkowo apka ta pobiera informacje z plikow tekstowych oraz
+z zewnetrzej bazy danych od Oracle. Poza informatyka interesuje sie rowniez rynkiem kryptowalut, dlatego jesli
+spodoba Ci sie moja praca to mozesz mi przeslac datek na portfel ETH (adres ponizej). Jezeli ktokolwiek to czyta
+to zycze milego korzystania z aplikacji!

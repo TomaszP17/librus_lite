@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Main">
+  <grid id="27dc6" binding="MainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="933" height="682"/>
+    </constraints>
+    <properties>
+      <background color="-9799798"/>
+    </properties>
+    <border type="none" title-justification="2"/>
+    <children>
+      <grid id="7b3d0" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-458764"/>
+        </properties>
+        <border type="line"/>
+        <children>
+          <component id="7571d" class="javax.swing.JButton" binding="Log_in">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="522" height="30"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Zaloguj"/>
+            </properties>
+          </component>
+          <component id="eaae5" class="javax.swing.JButton" binding="Sign_in">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="522" height="30"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Zarejestruj się"/>
+            </properties>
+          </component>
+          <component id="f5c6c" class="javax.swing.JButton" binding="Author">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Autor"/>
+            </properties>
+          </component>
+          <component id="477ee" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Zarejestrowanych użytkowników:"/>
+            </properties>
+          </component>
+          <component id="20684" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Wszystkich odwiedzin:"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="e105c" class="javax.swing.JLabel" binding="upperPanel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-8812643"/>
+          <font name="Unispace" size="18" style="2"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="11"/>
+          <text value="Witaj w programie Librus Lite, wybierz opcje poniżej, by przejść dalej"/>
+        </properties>
+      </component>
+      <component id="7ab19" class="javax.swing.JLabel">
+        <constraints border-constraint="South"/>
+        <properties>
+          <font name="Consolas" style="2"/>
+          <horizontalAlignment value="0"/>
+          <text value="Program autorstwa: Chuwdu Developer S.A.  2023 - XXXX"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
