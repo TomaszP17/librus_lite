@@ -3,12 +3,14 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AuthorWindow extends JPanel {
 
-    private JLabel BottomLabel;
-    private JTextArea mlodyAmbitnyProgramistaKtoryTextArea;
-    private JLabel UpperLabel;
+    private JLabel bottomLabel;
+    private JTextArea textArea;
+    private JLabel upperLabel;
 
     public AuthorWindow() {
         setLayout(new GridBagLayout());
@@ -16,8 +18,42 @@ public class AuthorWindow extends JPanel {
         gridBagConstraints.insets = new Insets(5, 5, 5, 5);
         gridBagConstraints.fill = GridBagConstraints.BOTH;
 
-        UpperLabel = new JLabel("Upper Label", SwingConstants.CENTER);
-        BottomLabel = new JLabel("Bottom Label", SwingConstants.CENTER);
+        upperLabel = new JLabel("KILKA SLOW O AUTORZE...", SwingConstants.CENTER);
+        Font upperFont = new Font("Consolas", Font.PLAIN, 24);
+        upperLabel.setFont(upperFont);
+        upperLabel.setOpaque(true);
+        upperLabel.setBackground(Color.LIGHT_GRAY);
+        String phoneNumber = null;
+        String ethWallet = null;
+
+        try{
+            String filePath = "./text_files/contact.txt";
+            File file = new File(filePath);
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                Pattern phonePattern = Pattern.compile("\\d{3}-\\d{3}-\\d{3}");
+                Matcher phoneMatcher = phonePattern.matcher(line);
+                if(phoneMatcher.find()){
+                    phoneNumber = phoneMatcher.group(0);
+                }
+
+                Pattern ethWalletPattern = Pattern.compile("[0-9a-zA-Z]{40}");
+                Matcher ethWalletMatcher = ethWalletPattern.matcher(line);
+                if(ethWalletMatcher.find()){
+                    ethWallet = ethWalletMatcher.group(0);
+                }
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        bottomLabel = new JLabel("wesprzyj tworce: [BLIK] " + phoneNumber + " / [ETH] " + ethWallet , SwingConstants.CENTER);
+        Font bottomFont = new Font("Consolas", Font.PLAIN, 12);
+        bottomLabel.setFont(bottomFont);
+        bottomLabel.setOpaque(true);
+        bottomLabel.setBackground(Color.LIGHT_GRAY);
 
         StringBuilder contentTextArea = new StringBuilder();
         try{
@@ -33,22 +69,25 @@ public class AuthorWindow extends JPanel {
             e.printStackTrace();
         }
 
-        mlodyAmbitnyProgramistaKtoryTextArea = new JTextArea(contentTextArea.toString());
-        mlodyAmbitnyProgramistaKtoryTextArea.setLineWrap(true);
-        mlodyAmbitnyProgramistaKtoryTextArea.setWrapStyleWord(true);
+        textArea = new JTextArea(contentTextArea.toString());
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setEditable(false);
+        Font textAreaFont = new Font("Consolas", Font.ITALIC, 14);
+        textArea.setFont(textAreaFont);
 
         gridBagConstraints.gridy = 0;
-        add(UpperLabel, gridBagConstraints);
+        add(upperLabel, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        add(mlodyAmbitnyProgramistaKtoryTextArea, gridBagConstraints);
+        add(textArea, gridBagConstraints);
 
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weighty = 0.0;
-        add(BottomLabel, gridBagConstraints);
+        add(bottomLabel, gridBagConstraints);
 
         setPreferredSize(new Dimension(600, 400));
     }

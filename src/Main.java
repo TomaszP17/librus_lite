@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main extends JFrame {
-
     private JPanel MainPanel;
     private JLabel upperPanel;
     private JButton Log_in;
@@ -12,7 +11,6 @@ public class Main extends JFrame {
     public static void main(String[] args) {
         new Main();
     }
-    //I'm checking is git is okay :)
     public Main(){
         setContentPane(MainPanel);
         setTitle("Simple GUI App");
@@ -62,6 +60,7 @@ public class Main extends JFrame {
             courseComboBox.addItem(Course.KJ);
             JLabel specializationLabel = new JLabel("Specializaiton: ");
             JComboBox<Specialization> specializactionJComboBox = new JComboBox<>();
+            specializactionJComboBox.addItem(Specialization.BRAK_SPECJALIZACJI);
             specializactionJComboBox.addItem(Specialization.A_BD);
             specializactionJComboBox.addItem(Specialization.A_IO);
             specializactionJComboBox.addItem(Specialization.B);
@@ -91,11 +90,10 @@ public class Main extends JFrame {
             jPanel.add(specializactionJComboBox);
 
             JScrollPane scrollPane = new JScrollPane(jPanel);
-            scrollPane.setPreferredSize(new Dimension(300, 500));
+            scrollPane.setPreferredSize(new Dimension(400, 500));
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-
-            //JOptionPane.showConfirmDialog(Main.this, scrollPane, "Logowanie", JOptionPane.OK_CANCEL_OPTION);
+            JOptionPane.showConfirmDialog(Main.this, scrollPane, "Rejestracja", JOptionPane.OK_CANCEL_OPTION);
 
         });
         Author.addActionListener(e -> {

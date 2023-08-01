@@ -1,4 +1,5 @@
 public enum Specialization {
+    BRAK_SPECJALIZACJI(null),
     A_BD("Bazy danych"),
     A_IO("Inżynieria oprogramowania i baz danych"),
     B("Cyberbezpieczeństwo, programowanie systemowe i sieciowe"),
