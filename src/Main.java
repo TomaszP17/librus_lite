@@ -12,7 +12,7 @@ public class Main extends JFrame {
     public static void main(String[] args) {
         new Main();
     }
-
+    //I'm checking is git is okay :)
     public Main(){
         setContentPane(MainPanel);
         setTitle("Simple GUI App");
