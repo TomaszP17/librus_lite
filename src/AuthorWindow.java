@@ -23,9 +23,11 @@ public class AuthorWindow extends JPanel {
         upperLabel.setFont(upperFont);
         upperLabel.setOpaque(true);
         upperLabel.setBackground(Color.LIGHT_GRAY);
+
         String phoneNumber = null;
         String ethWallet = null;
 
+        //searching for phoneNumber and ethWallet in file "contact.txt" by regex finder
         try{
             String filePath = "./text_files/contact.txt";
             File file = new File(filePath);
@@ -56,6 +58,8 @@ public class AuthorWindow extends JPanel {
         bottomLabel.setBackground(Color.LIGHT_GRAY);
 
         StringBuilder contentTextArea = new StringBuilder();
+
+        //getting content from file "author.txt" to textArea
         try{
             String filePath = "./text_files/author.txt";
             File file = new File(filePath);

@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
 
 public class Main extends JFrame {
     private JPanel MainPanel;
@@ -7,7 +8,13 @@ public class Main extends JFrame {
     private JButton Log_in;
     private JButton Sign_in;
     private JButton Author;
+    private JLabel registeredUsers;
+    private JLabel allVisit;
     private AuthorWindow authorWindow;
+    //sum of registered users
+    private int rUsers;
+    //sum of open app
+    private int countOfVisit;
     public static void main(String[] args) {
         new Main();
     }
@@ -100,5 +107,8 @@ public class Main extends JFrame {
             authorWindow = new AuthorWindow();
             JOptionPane.showMessageDialog(Main.this, authorWindow, "Autor", JOptionPane.WARNING_MESSAGE);
         });
+
+        registeredUsers.setText(rUsers == 0 ? registeredUsers.getText() + " 0" : registeredUsers.getText() + " " + rUsers);
+        allVisit.setText(countOfVisit == 0 ? allVisit.getText() + " 0" : allVisit.getText() + " " + countOfVisit);
     }
 }
