@@ -26,6 +26,10 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        //User need to declare path to icon
+        ImageIcon icon = new ImageIcon("C:\\Users\\Tomasz\\Desktop\\PORTFOLIO\\librus_lite\\res\\icon.png");
+        setIconImage(icon.getImage());
+
         Log_in.addActionListener(e -> {
             JPanel jPanel = new JPanel(new GridLayout(0, 2, 5, 5));
             JLabel loginLabel = new JLabel("Login: ");
@@ -110,5 +114,7 @@ public class Main extends JFrame {
 
         registeredUsers.setText(rUsers == 0 ? registeredUsers.getText() + " 0" : registeredUsers.getText() + " " + rUsers);
         allVisit.setText(countOfVisit == 0 ? allVisit.getText() + " 0" : allVisit.getText() + " " + countOfVisit);
+
+
     }
 }
