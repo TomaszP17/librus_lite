@@ -1,120 +1,46 @@
 import javax.swing.*;
-import java.awt.*;
-import java.sql.Connection;
 
 public class Main extends JFrame {
-    private JPanel MainPanel;
+    private JPanel jPanel;
     private JLabel upperPanel;
     private JButton Log_in;
     private JButton Sign_in;
     private JButton Author;
     private JLabel registeredUsers;
     private JLabel allVisit;
-    private AuthorWindow authorWindow;
-    //sum of registered users
-    private int rUsers;
-    //sum of open app
-    private int countOfVisit;
+    private int rUsers; //sum of registered users
+    private int countOfVisit; //sum of open app
     public static void main(String[] args) {
         new Main();
     }
     public Main(){
-        setContentPane(MainPanel);
-        setTitle("Simple GUI App");
+        setContentPane(jPanel);
+        setTitle("Librus Lite");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 200);
+
         setLocationRelativeTo(null);
+        pack();
         setVisible(true);
 
         //User need to declare path to icon
         ImageIcon icon = new ImageIcon("C:\\Users\\Tomasz\\Desktop\\PORTFOLIO\\librus_lite\\res\\icon.png");
         setIconImage(icon.getImage());
 
-        Log_in.addActionListener(e -> {
-            JPanel jPanel = new JPanel(new GridLayout(0, 2, 5, 5));
-            JLabel loginLabel = new JLabel("Login: ");
-            JTextField loginTextField = new JTextField(10);
-            JLabel passwordLabel = new JLabel("Password: ");
-            JPasswordField passwordField = new JPasswordField(10);
+        Log_in.addActionListener(new Log_InButtonListener(this, new ApplicationWindow()));
+        Sign_in.addActionListener(new Sign_inButtonListener());
+        Author.addActionListener(new AuthorButtonListener());
 
-            jPanel.add(loginLabel);
-            jPanel.add(loginTextField);
-            jPanel.add(passwordLabel);
-            jPanel.add(passwordField);
-
-            JOptionPane.showConfirmDialog(Main.this,jPanel, "Logowanie", JOptionPane.OK_CANCEL_OPTION);
-        });
-        Sign_in.addActionListener(e -> {
-            JPanel jPanel = new JPanel(new GridLayout(0, 2, 5, 5));
-            JLabel firstNameLabel = new JLabel("First name: ");
-            JTextField firstNameTextField = new JTextField(10);
-            JLabel lastNameLabel = new JLabel("Last name: ");
-            JTextField lastNameTextField = new JTextField(10);
-            JLabel ageLabel = new JLabel("Age: ");
-            JTextField ageTextField = new JTextField(5);
-            JLabel emailLabel = new JLabel("Email: ");
-            JTextField emailTextField = new JTextField(10);
-            JLabel phoneLabel = new JLabel("Phone: ");
-            JTextField phoneTextField = new JTextField(10);
-            JLabel studyYearLabel = new JLabel("Study Year: ");
-            JComboBox<StudyYear> studyYearComboBox = new JComboBox<>();
-            studyYearComboBox.addItem(StudyYear.FIRST);
-            studyYearComboBox.addItem(StudyYear.SECOND);
-            studyYearComboBox.addItem(StudyYear.THIRD);
-            studyYearComboBox.addItem(StudyYear.FOURTH);
-            studyYearComboBox.addItem(StudyYear.FIFTH);
-            JLabel courseLabel = new JLabel("Course: ");
-            JComboBox<Course> courseComboBox = new JComboBox<>();
-            courseComboBox.addItem(Course.IT);
-            courseComboBox.addItem(Course.HR);
-            courseComboBox.addItem(Course.SNM);
-            courseComboBox.addItem(Course.KJ);
-            JLabel specializationLabel = new JLabel("Specializaiton: ");
-            JComboBox<Specialization> specializactionJComboBox = new JComboBox<>();
-            specializactionJComboBox.addItem(Specialization.BRAK_SPECJALIZACJI);
-            specializactionJComboBox.addItem(Specialization.A_BD);
-            specializactionJComboBox.addItem(Specialization.A_IO);
-            specializactionJComboBox.addItem(Specialization.B);
-            specializactionJComboBox.addItem(Specialization.D);
-            specializactionJComboBox.addItem(Specialization.E);
-            specializactionJComboBox.addItem(Specialization.E_3D);
-            specializactionJComboBox.addItem(Specialization.E_PG);
-            specializactionJComboBox.addItem(Specialization.F);
-            specializactionJComboBox.addItem(Specialization.G);
-            specializactionJComboBox.addItem(Specialization.H);
-
-            jPanel.add(firstNameLabel);
-            jPanel.add(firstNameTextField);
-            jPanel.add(lastNameLabel);
-            jPanel.add(lastNameTextField);
-            jPanel.add(ageLabel);
-            jPanel.add(ageTextField);
-            jPanel.add(emailLabel);
-            jPanel.add(emailTextField);
-            jPanel.add(phoneLabel);
-            jPanel.add(phoneTextField);
-            jPanel.add(studyYearLabel);
-            jPanel.add(studyYearComboBox);
-            jPanel.add(courseLabel);
-            jPanel.add(courseComboBox);
-            jPanel.add(specializationLabel);
-            jPanel.add(specializactionJComboBox);
-
-            JScrollPane scrollPane = new JScrollPane(jPanel);
-            scrollPane.setPreferredSize(new Dimension(400, 500));
-            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-            JOptionPane.showConfirmDialog(Main.this, scrollPane, "Rejestracja", JOptionPane.OK_CANCEL_OPTION);
-
-        });
-        Author.addActionListener(e -> {
-            authorWindow = new AuthorWindow();
-            JOptionPane.showMessageDialog(Main.this, authorWindow, "Autor", JOptionPane.WARNING_MESSAGE);
-        });
-
+        //stats label
         registeredUsers.setText(rUsers == 0 ? registeredUsers.getText() + " 0" : registeredUsers.getText() + " " + rUsers);
         allVisit.setText(countOfVisit == 0 ? allVisit.getText() + " 0" : allVisit.getText() + " " + countOfVisit);
 
 
     }
+    public void changeWindow(JPanel panel){
+        setContentPane(panel);
+        validate();
+        repaint();
+        pack();
+    }
 }
+
