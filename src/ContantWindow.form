@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ContantWindow">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="932" height="1875"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="eb9dd" class="javax.swing.JLabel" binding="upperLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-2879096"/>
+          <font name="JetBrains Mono" size="20" style="1"/>
+          <horizontalAlignment value="0"/>
+          <text value="Kontakt z administratorem"/>
+        </properties>
+      </component>
+      <component id="90e3" class="javax.swing.JTextArea" binding="textArea" default-binding="true">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <editable value="false"/>
+          <font name="Consolas"/>
+          <lineWrap value="true"/>
+          <rows value="2"/>
+          <text value="Telefon:&#10;(+48) 22 11 876 23&#10;(+48) 666 444 666&#10;&#10;Mail:&#10;chuwduminer@gmail.com&#10;&#10;Godziny:&#10;Pon - Pt ( 8:00 - 16:00 )&#10;Sb ( 10:00 - 15:00 )"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

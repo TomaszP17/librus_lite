@@ -26,7 +26,7 @@ public class Main extends JFrame {
         ImageIcon icon = new ImageIcon("C:\\Users\\Tomasz\\Desktop\\PORTFOLIO\\librus_lite\\res\\icon.png");
         setIconImage(icon.getImage());
 
-        Log_in.addActionListener(new Log_InButtonListener(this, new ApplicationWindow()));
+        Log_in.addActionListener(new Log_InButtonListener(this, new ApplicationWindow(this)));
         Sign_in.addActionListener(new Sign_inButtonListener());
         Author.addActionListener(new AuthorButtonListener());
 
@@ -34,13 +34,15 @@ public class Main extends JFrame {
         registeredUsers.setText(rUsers == 0 ? registeredUsers.getText() + " 0" : registeredUsers.getText() + " " + rUsers);
         allVisit.setText(countOfVisit == 0 ? allVisit.getText() + " 0" : allVisit.getText() + " " + countOfVisit);
 
-
     }
     public void changeWindow(JPanel panel){
         setContentPane(panel);
         validate();
         repaint();
         pack();
+    }
+    public JPanel getMainPanel(){
+        return jPanel;
     }
 }
 

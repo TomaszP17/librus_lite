@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class Log_InButtonListener implements ActionListener {
 
-    private Main mainWindow;
-    private ApplicationWindow applicationWindow;
+    private final Main mainWindow;
+    private final ApplicationWindow applicationWindow;
     public Log_InButtonListener(Main main, ApplicationWindow applicationWindow) {
         this.mainWindow = main;
         this.applicationWindow = applicationWindow;
