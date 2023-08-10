@@ -38,9 +38,6 @@ public class Log_InButtonListener implements ActionListener {
 
             //obsluga prawidlowego logowania sie uzytkownika w aplikacji
             //call do bazy
-
-
         }
-
     }
 }

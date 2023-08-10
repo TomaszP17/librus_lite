@@ -42,7 +42,7 @@
           <text value="Wiadomosci"/>
         </properties>
       </component>
-      <component id="a676" class="javax.swing.JButton" binding="uzytkownikButton" default-binding="true">
+      <component id="a676" class="javax.swing.JButton" binding="userButton" default-binding="true">
         <constraints>
           <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="1"/>
@@ -195,7 +195,7 @@
           <text value="Data i Godzina"/>
         </properties>
       </component>
-      <component id="858c3" class="javax.swing.JButton" binding="kontaktButton" default-binding="true">
+      <component id="858c3" class="javax.swing.JButton" binding="contactButton" default-binding="true">
         <constraints>
           <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

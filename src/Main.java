@@ -35,12 +35,14 @@ public class Main extends JFrame {
         allVisit.setText(countOfVisit == 0 ? allVisit.getText() + " 0" : allVisit.getText() + " " + countOfVisit);
 
     }
+
     public void changeWindow(JPanel panel){
         setContentPane(panel);
         validate();
         repaint();
         pack();
     }
+
     public JPanel getMainPanel(){
         return jPanel;
     }

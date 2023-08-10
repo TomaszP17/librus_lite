@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -8,7 +7,7 @@ public class ApplicationWindow extends JFrame{
     private JButton ocenyButton;
     private JButton ogloszeniaButton;
     private JButton wiadomosciButton;
-    private JButton uzytkownikButton;
+    private JButton userButton;
     private JList list1;
     private JButton logoutButtom;
     private JPanel centerPanel;
@@ -17,7 +16,7 @@ public class ApplicationWindow extends JFrame{
     private JList list2;
     private JLabel bottomLabel;
     private JLabel mainLogo;
-    private JButton kontaktButton;
+    private JButton contactButton;
     private JLabel dateAndTime;
     private Main mainWindow;
 
@@ -27,34 +26,24 @@ public class ApplicationWindow extends JFrame{
         setIconImage(icon.getImage());
 
         //date and time label
-        LocalDate localDate = LocalDate.now();
-        LocalTime localTime = LocalTime.now();
-        String dateAndTimeText = localDate + " / " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond();
-        dateAndTime.setText(dateAndTimeText);
 
-        uzytkownikButton.addActionListener(e -> {
-            UserWindow userWindow = new UserWindow();
-            JOptionPane.showConfirmDialog(this, userWindow, "Kontakt", JOptionPane.DEFAULT_OPTION);
-        });
+        dateAndTime.setText(getLocalDateAndTime());
+        // when user clicked on userButton to see info about him
+        userButton.addActionListener(new UserButtonListener(mainWindow, this));
 
-        //Kontakt
-        kontaktButton.addActionListener(e -> {
-            ContantWindow contantWindow = new ContantWindow();
-            JOptionPane.showConfirmDialog(this, contantWindow, "Kontakt", JOptionPane.DEFAULT_OPTION);
-        });
+        //user button which open new window,
+        contactButton.addActionListener(new ContactButtonListener(this));
 
         //logout button listener
-        logoutButtom.addActionListener(e -> {
-            int resultFromWindow = JOptionPane.showConfirmDialog(this, "Czy chcesz sie wylogowac?", "Wylogowanie", JOptionPane.OK_CANCEL_OPTION);
-            if(resultFromWindow == JOptionPane.OK_OPTION){
-                //wylogowanie uzytkownika
-                //ustawienie go na offline jesli bedzie taka opcja
-                //zmiana ekranu na Main
-                mainWindow.changeWindow(mainWindow.getMainPanel());
-            }
-        });
+        logoutButtom.addActionListener(new LogOutButtonListener(mainWindow, this));
     }
     public JPanel getMainPanel(){
         return mainPanel;
+    }
+    //method which gets date and time
+    public String getLocalDateAndTime(){
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        return localDate + " / " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond();
     }
 }
