@@ -2,7 +2,8 @@ public enum Course implements EnumListener{
     IT("Computer Science"),
     HR("Information management"),
     SNM("New media art"),
-    KJ("Japan culture");
+    KJ("Japan culture"),
+    TEACHER(null);
 
     private final String courseName;
 

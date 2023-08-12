@@ -1,5 +1,5 @@
 public enum Specialization implements EnumListener{
-    BRAK_SPECJALIZACJI(null),
+    TEACHER(null),
     A_BD("Bazy danych"),
     A_IO("Inżynieria oprogramowania i baz danych"),
     B("Cyberbezpieczeństwo, programowanie systemowe i sieciowe"),

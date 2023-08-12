@@ -1,4 +1,5 @@
 public class Student extends User{
+    private static int counter = 0;
     private int studentId;
     private StudyYear studyYear;
     private Course course;
@@ -11,6 +12,8 @@ public class Student extends User{
         this.studyYear = studyYear;
         this.course = course;
         this.specialization = specialization;
+
+        counter++;
     }
 
     public int getStudentId() {

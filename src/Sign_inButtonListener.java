@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Sign_inButtonListener implements ActionListener {
     @Override
@@ -18,7 +19,23 @@ public class Sign_inButtonListener implements ActionListener {
             if (isEmptyFields(jPanel)) {
                 showInfoWindow(jPanel);
             } else {
+                //if fields are filled
+                //create new object
+                User user;
                 List<String> array = getDataFromFields(jPanel);
+                //generate login (counter) and password
+                String password = generatePassword();
+                //login is counter in each classes
+                if(isStudent(jPanel)){
+
+                }else{
+
+                }
+
+                //save it to file
+
+
+
                 saveDataToFile(array, 1, "password");
             }
         }
@@ -28,6 +45,12 @@ public class Sign_inButtonListener implements ActionListener {
      * @param panel - the main panel in this window
      */
     public void addElementsToPanel(JPanel panel){
+        JLabel statusLabel = new JLabel("Your status: ");
+        JComboBox<String> statusComboBox = new JComboBox<>();
+        statusComboBox.addItem("Student");
+        statusComboBox.addItem("Teacher");
+        JLabel peselLabel = new JLabel("Pesel: ");
+        JTextField peselTextField = new JTextField(10);
         JLabel firstNameLabel = new JLabel("First name: ");
         JTextField firstNameTextField = new JTextField(10);
         JLabel lastNameLabel = new JLabel("Last name: ");
@@ -38,6 +61,8 @@ public class Sign_inButtonListener implements ActionListener {
         JTextField emailTextField = new JTextField(10);
         JLabel phoneLabel = new JLabel("Phone: ");
         JTextField phoneTextField = new JTextField(10);
+        JLabel infoLabel = new JLabel("If You are a teacher, choose TEACHER below");
+        JLabel stupidLabel = new JLabel("");
         JLabel studyYearLabel = new JLabel("Study Year: ");
         JComboBox<StudyYear> studyYearComboBox = new JComboBox<>();
         addToComboBox(studyYearComboBox, EnumListener.getAllValues(StudyYear.class));
@@ -48,6 +73,10 @@ public class Sign_inButtonListener implements ActionListener {
         JComboBox<Specialization> specializactionJComboBox = new JComboBox<>();
         addToComboBox(specializactionJComboBox, EnumListener.getAllValues(Specialization.class));
 
+        panel.add(statusLabel);
+        panel.add(statusComboBox);
+        panel.add(peselLabel);
+        panel.add(peselTextField);
         panel.add(firstNameLabel);
         panel.add(firstNameTextField);
         panel.add(lastNameLabel);
@@ -58,6 +87,8 @@ public class Sign_inButtonListener implements ActionListener {
         panel.add(emailTextField);
         panel.add(phoneLabel);
         panel.add(phoneTextField);
+        panel.add(infoLabel);
+        panel.add(stupidLabel);
         panel.add(studyYearLabel);
         panel.add(studyYearComboBox);
         panel.add(courseLabel);
@@ -90,8 +121,8 @@ public class Sign_inButtonListener implements ActionListener {
     }
     //create window with communicate about empty fields
     public void showInfoWindow(JPanel panel){
-        JOptionPane.showMessageDialog(panel, "Problem with fields\n" +
-                "Please try again");
+        JOptionPane.showMessageDialog(panel, "You didn't filled out all the fields!\n" +
+                "Please try again :>");
     }
 
     //method get all data from fields into list of strings
@@ -127,5 +158,55 @@ public class Sign_inButtonListener implements ActionListener {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    //create new object, check status combo box
+    public boolean isStudent(JPanel panel){
+        JComboBox<String> statusComboBox = (JComboBox<String>) panel.getComponent(1);
+        String selectedStatus = (String) statusComboBox.getSelectedItem();
+        return selectedStatus.equals("Student");
+    }
+
+    //check is password good it means pass has small, big, digs and spec in
+    public boolean isGoodPassword(String chars, boolean small, boolean big, boolean digs, boolean spec){
+        if(small && !chars.matches(".*[a-z].*")){
+            return false;
+        }
+        if(big && !chars.matches(".*[A-Z].*")){
+            return false;
+        }
+        if(digs && !chars.matches(".*[1-9].*")){
+            return false;
+        }
+        if(spec && !chars.matches(".*[!-)]")){
+            return false;
+        }
+        return true;
+    }
+
+    //generate 10 length password with Big Small letters, digits, special
+    public String generatePassword() {
+        String smallLetters = "abcdefghijklmnoprstuwxyz";
+        String bigLetters = "ABCDEFGHIJKLMNOPRSTUWXYZ";
+        String digits = "0123456789";
+        String specials = "!@#$%^&*()";
+        String allChars = smallLetters + bigLetters + digits + specials;
+
+        boolean small = true;
+        boolean big = true;
+        boolean digs = true;
+        boolean spec = true;
+
+        Random random = new Random();
+        String generatedPassword = "";
+
+        while (!isGoodPassword(generatedPassword, small, big, digs, spec)) {
+            generatedPassword = "";
+            for (int i = 0; i < 10; i++) {
+                generatedPassword += allChars.charAt(random.nextInt(allChars.length()));
+            }
+        }
+        System.out.println("Wylosowane haslo: " + generatedPassword);
+        return generatedPassword;
     }
 }

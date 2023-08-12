@@ -1,1 +1,6 @@
 s1 | passwordpassword | Tomasz | Chuwdu | 20 | chuwduminer@gmail.com | 666666666 | SECOND | IT | B |
+s1 | password | Krzysztof | Wróblewski | 19 | krzysiek@gmail.com | 777401629 | FOURTH | SNM | A_IO | 
+s1 | password | Demo | Demoriusz | 34 | demorion666@gmail.com | 666666666 | FIFTH | HR | B | Teacher | 
+s1 | password | Student | 03271304251 | Tomasz | P | 20 | tpluc@gmail.com | 123 | SECOND | IT | B | 
+s1 | password | Student | as | as | as | as | as | as | FIRST | IT | TEACHER | 
+s1 | password | Student | as | as | as | as | as | as | FIRST | IT | TEACHER | 
