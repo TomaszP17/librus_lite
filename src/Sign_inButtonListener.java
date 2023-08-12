@@ -14,43 +14,14 @@ public class Sign_inButtonListener implements ActionListener {
 
         int result = JOptionPane.showConfirmDialog(null, jPanel, "Rejestracja", JOptionPane.OK_CANCEL_OPTION);
 
-        //checking registration function
-
-        /*if(result == JOptionPane.OK_OPTION){
-            String firstName = firstNameTextField.getText();
-            String lastName = lastNameTextField.getText();
-            String age = ageTextField.getText();
-            String email = emailTextField.getText();
-            String phone = phoneTextField.getText();
-            String studyYear = studyYearComboBox.getSelectedItem().toString();
-            String course = courseComboBox.getSelectedItem().toString();
-            String specialization = specializactionJComboBox.getSelectedItem().toString();
-
-            List<String> fieldsArray = new ArrayList<>();
-            fieldsArray.add(firstName);
-            fieldsArray.add(lastName);
-            fieldsArray.add(age);
-            fieldsArray.add(email);
-            fieldsArray.add(phone);
-            fieldsArray.add(studyYear);
-            fieldsArray.add(course);
-            fieldsArray.add(specialization);
-
-            for (String x : fieldsArray) {
-                if ( x.equals("") ) {
-                    System.out.println("znaleziono nulla");
-                }
+        if (result == JOptionPane.OK_OPTION) {
+            if (isEmptyFields(jPanel)) {
+                showInfoWindow(jPanel);
+            } else {
+                List<String> array = getDataFromFields(jPanel);
+                saveDataToFile(array, 1, "password");
             }
-            String filePath = "./text_files/users.txt";
-            try {
-                FileWriter fileWriter = new FileWriter(filePath, true);
-                fileWriter.write(firstName + "xxx\n");
-                fileWriter.close();
-
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }*/
+        }
     }
     /**
      * Method add elements to main panel (labels, textfields, comboboxes)
@@ -104,9 +75,57 @@ public class Sign_inButtonListener implements ActionListener {
         }
     }
 
-    //check if fields are empty
+    //check if textfields are empty
     public boolean isEmptyFields(JPanel panel){
-        Compopanel.getComponents();
+        Component[] components = panel.getComponents();
+        for(Component x : components){
+            if(x instanceof JTextField){
+                JTextField textField = (JTextField) x;
+                if(textField.getText().isEmpty()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    //create window with communicate about empty fields
+    public void showInfoWindow(JPanel panel){
+        JOptionPane.showMessageDialog(panel, "Problem with fields\n" +
+                "Please try again");
     }
 
+    //method get all data from fields into list of strings
+    public List<String> getDataFromFields(JPanel panel){
+        Component[] components = panel.getComponents();
+        List<String> userDataArray = new ArrayList<>();
+        for(Component x : components){
+            if(x instanceof JTextField){
+                String data = ((JTextField) x).getText();
+                userDataArray.add(data);
+            }else if (x instanceof JComboBox) {
+                JComboBox comboBox = (JComboBox) x;
+                String data = comboBox.getSelectedItem().toString();
+                userDataArray.add(data);
+            }
+        }
+        return userDataArray;
+    }
+    //method get userData userIndex and userPassword to save it into the file users.txt
+    public void saveDataToFile(List<String> userDataArray, int userIndex, String userPassword){
+        String filePath = "./text_files/users.txt";
+        try {
+            FileWriter fileWriter = new FileWriter(filePath, true);
+            fileWriter.write("s" + userIndex + " | ");
+            fileWriter.write( userPassword + " | ");
+            for (String s : userDataArray) {
+                fileWriter.write(s + " | ");
+            }
+            fileWriter.write("\n");
+            fileWriter.flush();
+            fileWriter.close();
+
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 }
