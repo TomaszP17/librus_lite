@@ -1,4 +1,4 @@
-public enum Specialization {
+public enum Specialization implements EnumListener{
     BRAK_SPECJALIZACJI(null),
     A_BD("Bazy danych"),
     A_IO("Inżynieria oprogramowania i baz danych"),

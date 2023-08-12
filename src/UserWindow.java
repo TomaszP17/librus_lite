@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 
 public class UserWindow extends JFrame{
     private JPanel mainPanel;
@@ -12,28 +11,28 @@ public class UserWindow extends JFrame{
     private JPanel centerPanel;
     private JPanel rightPanel;
     private JButton backButton;
+    private JTable table1;
     private JLabel imageLabel;
 
     public UserWindow(Main main, ApplicationWindow applicationWindow) {
-        setTitle("User Information");
-        setSize(new Dimension(1080, 820));
 
-        DefaultTableModel tableModel = new DefaultTableModel();
+        // Create table and configurate it
+        JTable tbl = new JTable();
+        DefaultTableModel dtm = new DefaultTableModel(0, 2);
+        tbl.setModel(dtm);
+        // add row dynamically into the table
+        for (int count = 0; count < 8; count++) {
+            dtm.addRow(new Object[] { "data", "data" });
+        }
+        centerPanel.add(tbl);
+
 
         // when user wants back to the app window
         backButton.addActionListener(new BackButtonListener(applicationWindow, main));
 
     }
 
-    public void changeWindow(JPanel panel){
-        setContentPane(panel);
-        revalidate();
-        repaint();
-        pack();
-    }
-
     public JPanel getMainPanel() {
         return mainPanel;
     }
-
 }

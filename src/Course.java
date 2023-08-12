@@ -1,4 +1,4 @@
-public enum Course {
+public enum Course implements EnumListener{
     IT("Computer Science"),
     HR("Information management"),
     SNM("New media art"),

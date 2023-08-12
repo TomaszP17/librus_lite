@@ -1,4 +1,4 @@
-public enum StudyYear {
+public enum StudyYear implements EnumListener{
     FIRST(1),
     SECOND(2),
     THIRD(3),
