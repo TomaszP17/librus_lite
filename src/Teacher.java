@@ -9,4 +9,23 @@ public class Teacher extends User{
 
         counter++;
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "teacherId=" + teacherId +
+                '}';
+    }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 }

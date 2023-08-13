@@ -47,4 +47,18 @@ public class Student extends User{
     public void setSpecialization(Specialization specialization) {
         this.specialization = specialization;
     }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", studyYear=" + studyYear +
+                ", course=" + course +
+                ", specialization=" + specialization +
+                '}';
+    }
 }

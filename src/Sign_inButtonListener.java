@@ -27,16 +27,18 @@ public class Sign_inButtonListener implements ActionListener {
                 String password = generatePassword();
                 //login is counter in each classes
                 if(isStudent(jPanel)){
-
+                    user = new Student(array.get(0), array.get(1), array.get(2), Integer.parseInt(array.get(3)),
+                                        array.get(4), array.get(5), Student.getCounter(),
+                                        StudyYear.valueOf(array.get(6)), Course.valueOf(array.get(7)),
+                                        Specialization.valueOf(array.get(8)));
+                    System.out.println(user.toString());
                 }else{
-
+                    user = new Teacher(array.get(0), array.get(1), array.get(2), Integer.parseInt(array.get(3)),
+                                        array.get(4), array.get(5), Teacher.getCounter());
+                    System.out.println(user.toString());
                 }
-
                 //save it to file
-
-
-
-                saveDataToFile(array, 1, "password");
+                saveDataToFile(array,1 , "password");
             }
         }
     }
@@ -157,6 +159,15 @@ public class Sign_inButtonListener implements ActionListener {
 
         } catch (IOException ex) {
             throw new RuntimeException(ex);
+        }
+    }
+    //save user to file
+    public void saveDataToFile(User user){
+        String filePath = "./text_files/users.txt";
+        try( FileWriter fileWriter = new FileWriter(filePath, true);){
+            fileWriter.write(user.toString() + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
